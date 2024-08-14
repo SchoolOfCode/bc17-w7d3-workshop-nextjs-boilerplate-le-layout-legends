@@ -1,0 +1,31 @@
+.heroHeadline {
+  margin: 0;
+  padding: 0;
+}
+.heroDescription {
+  background-color: #f1911b;
+  font-size: 32px;
+  font-weight: bold;
+  padding: 10px;
+}
+.consultationParagraph {
+  font-size: 24px;
+  margin: 0;
+  padding: 0;
+}
+.numberSpan {
+  color: #fff2e4;
+}
+
+@media (min-width: 1024px) {
+  .heroDescription {
+    height: 150px;
+    width: 300px;
+    padding: 20px;
+  }
+  .consultationParagraph {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+  }
+}

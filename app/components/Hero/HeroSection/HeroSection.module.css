@@ -1,0 +1,14 @@
+.heroSection {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+  }
+ 
+@media (min-width: 1024px){
+  .heroSection {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 70%;
+  }
+}

@@ -1,0 +1,14 @@
+.headerContainer {
+    padding-left: 10px;
+    font-size: 16px;
+  }
+	
+  .title{
+    margin: 0;
+  }
+	
+  @media (min-width: 1024px) {
+    .headerContainer {
+      width: 70%;
+    }
+  }
