@@ -1,0 +1,12 @@
+.heroFoundersImage {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+
+@media (min-width: 1024px) {
+    .heroFoundersImage {
+        height: 500px;
+        width: 550px;
+    }
+}

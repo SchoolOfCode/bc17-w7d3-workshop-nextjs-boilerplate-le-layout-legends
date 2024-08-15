@@ -1,18 +1,14 @@
-"useclient"
-
-import HeroFoundersDescription from "../components/HeroFounders/HeroFoundersDescription/HeroFoundersDescription";
+import HeroFoundersSection from "../components/HeroFounders/HeroFoundersSection/HeroFoundersSection";
 
 import Separator from "../components/Separator/Separator";
 
-
-
 const Founders = () => {
-  return (
-    <Founders>
-      <HeroFoundersDescription />
-      <Separator />
-    </Founders>
-  );
+    return (
+        <main>
+            <HeroFoundersSection />
+            <Separator />
+        </main>
+    );
 };
 
 export default Founders;

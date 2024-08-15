@@ -1,14 +1,16 @@
+import styles from "./HeroFoundersImage.module.css";
+import Image from "next/image";
 
-
-import styles from './HeroFoundersImage.module.css'
 const HeroFoundersImage = () => {
     return (
-        <img
-        src="/images/founder-mike-and-mandy.png"
-        alt="Our founders, Mike and Mandy"
-        className={styles.heroFoundersImage}
-      />
-    )
-}
+        <Image
+            src="/images/founder-mike-and-mandy.png"
+            alt="Our founders, Mike and Mandy"
+            className={styles.heroFoundersImage}
+            width={400}
+            height={400}
+        />
+    );
+};
 
-export default HeroFoundersImage
+export default HeroFoundersImage;
