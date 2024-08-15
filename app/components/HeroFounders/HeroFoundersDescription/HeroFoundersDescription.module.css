@@ -1,0 +1,17 @@
+.heroFoundersContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 3rem 0;
+    background-color: orange;
+
+}
+
+.heroFoundersDescription {
+    font-size: 2.5rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    color: black;
+}
