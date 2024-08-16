@@ -8,19 +8,16 @@ const Reviews = () => {
 	let [selectedCountry, setSelectedCountry] = useState(null);
 	let [fetchedData, setFetchedData] = useState(null);
 
-	const handleClick = (country) => {
-		setSelectedCountry(country);
-	};
+	const handleClick = (country) => setSelectedCountry(country);
+	
 
 	useEffect(() => {
 		if (selectedCountry) {
 			fetch(`https://seal-app-336e8.ondigitalocean.app/reviews?country=${selectedCountry}`)
 				.then((response) => response.json())
 				.then((data) => setFetchedData(data));
-
 		}
 	}, [selectedCountry]);
-
 	return (
 		<section className={styles.reviewsContainer}>
 			<h1>Trusted.</h1>
@@ -29,24 +26,35 @@ const Reviews = () => {
 				latest review.
 			</p>
 			<div className={styles.buttonsContainer}>
-				<button onClick={() => handleClick("England")} className={`${styles.buttons} ${ selectedCountry === "England" ? styles.buttonActive : ""}`}>
+				<button
+					onClick={() => handleClick("England")}
+					className={`${styles.buttons} ${
+						selectedCountry === "England" ? styles.buttonActive : ""
+					}`}
+				>
 					England
 				</button>
-				<button onClick={() => handleClick("Wales")} className={`${styles.buttons} ${ selectedCountry === "Wales" ? styles.buttonActive : ""}`}>
+				<button
+					onClick={() => handleClick("Wales")}
+					className={`${styles.buttons} ${selectedCountry === "Wales" ? styles.buttonActive : ""}`}
+				>
 					Wales
 				</button>
-				<button onClick={() => handleClick("Scotland")} className={`${styles.buttons} ${ selectedCountry === "Scotland" ? styles.buttonActive : ""}`}>
+				<button
+					onClick={() => handleClick("Scotland")}
+					className={`${styles.buttons} ${
+						selectedCountry === "Scotland" ? styles.buttonActive : ""
+					}`}
+				>
 					Scotland
 				</button>
 			</div>
-			{fetchedData ? (
+			{fetchedData && (
 				<ReviewsText
 					text={fetchedData.text}
 					author={fetchedData.author}
 					location={fetchedData.location}
 				/>
-			) : (
-				""
 			)}
 		</section>
 	);
