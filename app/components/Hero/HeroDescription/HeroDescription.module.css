@@ -15,6 +15,7 @@
 }
 .numberSpan {
   color: #fff2e4;
+  font-size: 22px;
 }
 
 @media (min-width: 1024px) {
