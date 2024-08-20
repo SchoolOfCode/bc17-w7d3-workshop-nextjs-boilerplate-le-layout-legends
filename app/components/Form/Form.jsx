@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import styles from "./Form.module.css";
 
 export default function Form() {
     const [fullName, setFullName] = useState("");
@@ -111,7 +112,9 @@ export default function Form() {
                     ></input>
                 </fieldset>
             </form>
-            {error && <p className="error">{error}</p>}
+            {error ? <p className={styles.error} >{error}</p> : null}
+
+            <button type="submit" disabled={error ? true: false} >Request Design Consultation</button>
         </>
     );
 }
