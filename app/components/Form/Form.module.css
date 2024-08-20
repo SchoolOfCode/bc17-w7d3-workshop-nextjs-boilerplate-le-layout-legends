@@ -1,3 +1,84 @@
 .error {
     color: red;
+    font-size: 1.4rem;
+    text-align: center;
+}
+
+.hero {
+    background-color: orange;
+    font-size: 2.5rem;
+    text-align: center;
+    margin: 20px auto;
+    padding: 20px;
+    width: 86%;
+}
+.form {
+    width: 95%;
+    margin: 0 auto;
+}
+
+.personalInfo,
+.contactInfo {
+    all: unset;
+    display: flex;
+    flex-wrap: wrap;
+    background: #e8e4e4;
+    margin: 20px auto;
+}
+
+.personalInfo input,
+.contactInfo input {
+    width: 80%;
+    padding: 1rem;
+    margin: 5px auto;
+}
+
+.contactInfo label:first-child,
+.personalInfo label:first-child {
+    margin-top: 20px;
+}
+
+.contactInfo input:last-child,
+.personalInfo input:last-child {
+    margin-bottom: 30px;
+}
+
+.personalInfo label,
+.contactInfo label {
+    width: 100%;
+    font-size: 20px;
+    padding: 10px 10px 10px 25px;
+}
+
+.form > legend,
+.form > legend {
+    font-size: 25px;
+    font-weight: 400;
+}
+
+.buttonStyle {
+    all: unset;
+    background: orange;
+    display: block;
+    width: 92%;
+    padding: 15px;
+    margin: 10px auto;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.buttonStyle:disabled {
+    background: gray;
+    cursor: not-allowed;
+}
+
+@media (min-width: 1024px) {
+    .hero {
+        width: 768px;
+    }
+    .form {
+        width: 768px;
+    }
 }
