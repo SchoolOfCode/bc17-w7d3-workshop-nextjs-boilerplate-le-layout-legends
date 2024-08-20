@@ -1,9 +1,10 @@
-import React from 'react'
+"use client";
+import Form from '../components/Form/Form'
 
 export default function page() {
   return (
-    <div>
-      
-    </div>
+    <main>
+            <Form/>
+        </main>
   )
 }
