@@ -38,6 +38,17 @@ export default function Form() {
 		event.target.value === "" ? setError("Please enter your email address") : setError("");
 	};
 
+	const handleClick = () => {
+		console.dir({
+			fullName,
+			postCode,
+			streetAddress,
+			city,
+			phoneNumber,
+			email
+		})
+	}
+
 	return (
 		<>
 			<form>
@@ -96,7 +107,7 @@ export default function Form() {
 			</form>
 			{error ? <p className={styles.error} >{error}</p> : null}
 
-			<button type="submit" disabled={error ? true : false} >Request Design Consultation</button>
+			<button onClick={handleClick} type="submit" disabled={error ? true : false} >Request Design Consultation</button>
 		</>
 	);
 }
