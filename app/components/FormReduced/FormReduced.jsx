@@ -101,8 +101,7 @@ export default function FormReduced() {
 						onChange={handleChange}
 					></input>
 					<label htmlFor="streetAddress">
-						{" "}
-						House/Flat Number and Street Name{" "}
+						House/Flat Number and Street Name
 					</label>
 					<input
 						type="text"
