@@ -43,8 +43,8 @@ export default function FormReduced() {
         if (event.target.name === "email") {
             setEmail(event.target.value);
         }
+	}
 
-		se
         useEffect(() => {
             setError(!validateForm());
         }, [validateForm]);
@@ -60,7 +60,7 @@ export default function FormReduced() {
                 email,
             });
         };
-
+	
         return (
             <>
                 <div className={styles.hero}>Design Booking</div>
@@ -96,7 +96,7 @@ export default function FormReduced() {
                             type="text"
                             name="city"
                             value={city}
-                            onChange={handleCity}
+                            onChange={handleChange}
                         ></input>
                     </fieldset>
                     <legend>Contact Information</legend>
@@ -128,4 +128,4 @@ export default function FormReduced() {
             </>
         );
     }
-}
+

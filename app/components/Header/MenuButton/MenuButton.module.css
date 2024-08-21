@@ -6,11 +6,11 @@
 	font: inherit;
 	cursor: pointer;
 	outline: inherit;
-	position: fixed;
 	top: 0;
 	right: 0;
 	bottom: 1;
 	left: 1;
+
 }
 
 @media only screen and (min-width: 1024px) {
