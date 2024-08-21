@@ -23,6 +23,8 @@ export default function Form() {
 			email !== "";
 	};
 
+
+
 	const handleName = (event) => {
 		setFullName(event.target.value);
 	};
