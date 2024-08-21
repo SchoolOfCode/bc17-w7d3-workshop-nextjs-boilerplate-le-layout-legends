@@ -9,12 +9,12 @@ export default function FormReduced() {
 
     const validateForm = () => {
         return (
-            state.fullName !== "" &&
-            state.postCode !== "" &&
-            state.streetAddress !== "" &&
-            state.city !== "" &&
-            state.phoneNumber !== "" &&
-            state.email !== ""
+            state.form.fullName !== "" &&
+            state.form.postCode !== "" &&
+            state.form.streetAddress !== "" &&
+            state.form.city !== "" &&
+            state.form.phoneNumber !== "" &&
+            state.form.email !== ""
         );
     };
 
@@ -28,6 +28,7 @@ export default function FormReduced() {
                 return {
                     ...state,
                     form: {
+											...state.form,
                         [action.payload.fieldName]: action.payload.fieldValue,
                     },
                 };
@@ -35,6 +36,7 @@ export default function FormReduced() {
                 return {
                     ...state,
                     messageBox: {
+												...state.messageBox,
                         showMessageActive: action.payload.showMessageActive,
                         showMessageType: action.payload.showMessageType,
                         showMessageText: action.payload.showMessageText,
