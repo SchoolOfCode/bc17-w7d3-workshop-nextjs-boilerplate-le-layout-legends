@@ -83,3 +83,7 @@
         width: 768px;
     }
 }
+
+.hide {
+    display: none;
+}
