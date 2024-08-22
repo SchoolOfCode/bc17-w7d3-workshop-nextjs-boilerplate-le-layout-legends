@@ -1,7 +1,8 @@
 .error {
     color: red;
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     text-align: center;
+    padding-left: 25px;
 }
 
 .hero {
