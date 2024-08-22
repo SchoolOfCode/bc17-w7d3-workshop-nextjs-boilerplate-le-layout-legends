@@ -8,7 +8,7 @@ export default function FormReduced() {
     const [error, setError] = useState(false);
 
     // function handlers
-    // validates the form fields to ensure they are not empty. returns true if all fields are filled in, false if any are empty.
+    // validates the form fields to ensure they are not empty. returns true if all fields are filled in (all have truthy values), false if any are empty (have falsy values).
     //part of enable/disable form submission
     const validateForm = () => {
         return (
@@ -22,30 +22,37 @@ export default function FormReduced() {
     };
     // useEffect hook to check if the form is valid on each render (i.e. every time something changes/box is filled in).
     //If the form is not valid, the submit button is disabled.
+    //sets the error state to the opposite of the validateForm function (i.e. if the form is valid (i.e. truthy), then error state is false, 
+    //if the form is not valid at least 1 is falsy), the error state is true)
     useEffect(() => {
         setError(!validateForm());
     }, [validateForm]);
     //
     const reducer = (state, action) => {
         switch (action.type) {
+            //if the field is changed, update the form state with the new value
             case "FIELD_CHANGED":
                 return {
                     ...state,
                     form: {
                         ...state.form,
+                        // square brackets allow unpacking of the field name - dynamic property name determined at run time
                         [action.payload.fieldName]: action.payload.fieldValue,
                     },
                 };
+                //if the form is submitted, update the message box state with the new value- does not use dyanmic property name
             case "FORM_SUBMITTED":
                 return {
                     ...state,
                     messageBox: {
                         ...state.messageBox,
+                        //directly target the properties of the message box state ajd updates with new values from the action payload from the handleSubmit function
                         showMessageActive: action.payload.showMessageActive,
                         showMessageType: action.payload.showMessageType,
                         showMessageText: action.payload.showMessageText
                     },
                 };
+                //if there is an error, update the error state with the new value - same structure as the field changed case
             case "ERROR":
                 return {
                     ...state,
@@ -54,6 +61,7 @@ export default function FormReduced() {
                         [action.payload.fieldName]: action.payload.errorValue // Update only the specific field
                     },
                 };
+                //if none of the above cases are met, return the state as is
             default:
                 return state;
         }
@@ -85,18 +93,21 @@ export default function FormReduced() {
             email: false,
         },
     });
-
+    // takes in event as a parameter, and updates the form state with the new value of the field that has been changed as it targets the name of the field that has been changed
     function handleChange(event) {
+        //dispatches the field changed action, passing in the field name and the new value of the field to the reducer. type lets reducer know which case to execute
         dispatch({
             type: "FIELD_CHANGED",
+            //this is the payload that is passed to the reducer and used to update the state
             payload: {
                 fieldName: event.target.name,
                 fieldValue: event.target.value,
             },
         });
     }
-
+    //function to handle the form submission
     const handleSubmit = (e) => {
+        //prevents the default form submission behaviour stops it resetting on submission
         e.preventDefault();
         dispatch({
             type: "FIELD_CHANGED",
@@ -110,8 +121,8 @@ export default function FormReduced() {
                 type: "FORM_SUBMITTED",
                 payload: {
                     showMessageActive: true,
-                    showMessageType: "Success",
-                    showMessageText: "Form successfully submitted!",
+                    showMessageType: "Success ✅",
+                    showMessageText: "Confirmation email has been sent to your email address. Please check your inbox.",
                 },
             });
         }, 5000);
