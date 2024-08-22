@@ -1,9 +1,9 @@
 import { test, expect } from '@playwright/test';
 
-test('has title', async ({ page }) => {
-  await page.goto("http://localhost:3000/booking")
+test('check if validation works', async ({ page }) => {
+  await page.goto('http://localhost:3000/booking');
+  const inputElement = await page.locator('label:has-text("Full Name")').locator('input');
 
-  const fullName = await page.getByLabel("fullName").fill("Aw");
-
-  await expect(fullName).toHaveValue("Aw");
-})
+  inputElement.fill("Aw")
+  expect(await inputElement.inputValue()).toEqual('Aw');
+});
