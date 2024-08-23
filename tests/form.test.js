@@ -34,14 +34,11 @@ test("check if inputting for postCode and it's error works", async ({
 
   expect(await postCode.inputValue()).toEqual("NW2 888");
 
-  const postCodeError = page.locator(
-    "text=Please enter a valid postcode"
-  );
+  const postCodeError = page.locator("text=Please enter a valid postcode");
 
   // Assert that the error message is visible
   await expect(postCodeError).toBeVisible();
 });
-
 
 test("check review buttons visible, turns orange when country clicked and reviews are visible", async ({
   page,
@@ -74,15 +71,16 @@ test("check if submit button is disabled if any fields are empty", async ({
 
   const submitButton = await page.getByTestId("button");
 
-  expect(await submitButton.getAttribute("disabled")).toBe("") // disabled attribute should exist
+  expect(await submitButton.getAttribute("disabled")).toBe(""); // disabled attribute should exist
+});
 
-})
-
-test("check if submit button lets you click once all fields are not empty", async ({ page }) => {
+test("check if submit button lets you click once all fields are not empty", async ({
+  page,
+}) => {
   await page.goto("http://localhost:3000/booking");
 
   const fullName = await page.getByTestId("fullName");
-  await fullName.fill("Arnold"); // 1 character should be invalid
+  await fullName.fill("Arnold");
   await fullName.blur();
   await expect(await fullName.inputValue()).toEqual("Arnold");
 
@@ -111,5 +109,12 @@ test("check if submit button lets you click once all fields are not empty", asyn
   await expect(await email.inputValue()).toEqual("example@example.com");
 
   const submitButton = await page.getByTestId("button");
-  expect(await submitButton.getAttribute("disabled")).toBe(null) // // disabled attribute should NOT exist
+  expect(await submitButton.getAttribute("disabled")).toBe(null); // // disabled attribute should NOT exist
+
+  await submitButton.click();
+
+  const messageBoxText = await page.locator(
+    "text=Confirmation email has been sent to your email address. Please check your inbox."
+  );
+  await expect(messageBoxText).toBeVisible({ timeout: 10000 });
 });

@@ -147,6 +147,7 @@ export default function FormReduced() {
       <div className={styles.hero}>Design Booking </div>
       {state.messageBox.showMessageActive && (
         <MessageBox
+          data-testid="messageBox"
           messageType={state.messageBox.showMessageType}
           messageText={state.messageBox.showMessageText}
         />
