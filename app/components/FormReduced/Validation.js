@@ -6,9 +6,13 @@ export default async function validateInput(inputName, inputValue) {
     }
 
     if (inputName === "postCode") {
-        let data = await fetch(`https://api.postcodes.io/postcodes/${encodeURIComponent(inputValue)}`)
-        let result = await data.json();
-        result.status === 404 ? error = true : error = false;
+        try {
+            let data = await fetch(`https://api.postcodes.io/postcodes/${encodeURIComponent(inputValue)}`)
+            let result = await data.json();
+            result.status === 200 ? error = false : error = true;
+        } catch(error) {
+            /// dont wanna log anything tbh
+        }
     }
 
     if (inputName === "streetAddress") {

@@ -170,13 +170,13 @@ export default function FormReduced() {
             onBlur={handleBlur}
           ></input>
           {state.errors.fullName && (
-            <p className={styles.error}>
+            <p data-testid="fullNameError" className={styles.error}>
               Full name requires more than 3 characters
             </p>
           )}
           <label htmlFor="postCode"> Post Code </label>
           <input
-            className={state.errors.postCode && styles.errorInput}
+            className={state.errors.postCode ? styles.errorInput : ""}
             type="text"
             data-testid="postCode"
             name="postCode"
@@ -185,13 +185,13 @@ export default function FormReduced() {
             onBlur={handleBlur}
           ></input>
           {state.errors.postCode && (
-            <p className={styles.error}>Please enter a valid postcode</p>
+            <p data-testid="postCodeError" className={styles.error}>Please enter a valid postcode</p>
           )}
           <label htmlFor="streetAddress">
             House/Flat Number and Street Name
           </label>
           <input
-            className={state.errors.streetAddress && styles.errorInput}
+            className={state.errors.streetAddress ? styles.errorInput : ""}
             type="text"
             data-testid="streetAddress"
             name="streetAddress"
@@ -200,11 +200,11 @@ export default function FormReduced() {
             onBlur={handleBlur}
           ></input>
           {state.errors.streetAddress && (
-            <p className={styles.error}>Please enter a valid address</p>
+            <p data-testid="addressError" className={styles.error}>Please enter a valid address</p>
           )}
           <label htmlFor="city"> City </label>
           <input
-            className={state.errors.city && styles.errorInput}
+            className={state.errors.city ? styles.errorInput : ""}
             type="text"
             data-testid="city"
             name="city"
@@ -212,15 +212,15 @@ export default function FormReduced() {
             onChange={handleChange}
             onBlur={handleBlur}
           ></input>
-          {state.errors.city && (
-            <p className={styles.error}>Please enter a valid city</p>
-          )}
+          {state.errors.city ? (
+            <p data-testid="cityError" className={styles.error}>Please enter a valid city</p>
+          ) : ""}
         </fieldset>
         <legend>Contact Information</legend>
         <fieldset className={styles.contactInfo}>
           <label htmlFor="phoneNumber"> Phone Number </label>
           <input
-            className={state.errors.phoneNumber && styles.errorInput}
+            className={state.errors.phoneNumber ? styles.errorInput : ""}
             type="number"
             data-testid="phoneNumber"
             name="phoneNumber"
@@ -228,12 +228,12 @@ export default function FormReduced() {
             onChange={handleChange}
             onBlur={handleBlur}
           ></input>
-          {state.errors.phoneNumber && (
-            <p className={styles.error}>Please enter a valid UK phone number</p>
-          )}
+          {state.errors.phoneNumber ? (
+            <p data-testid="phoneNumberError" className={styles.error}>Please enter a valid UK phone number</p>
+          ) : ""}
           <label htmlFor="email"> Email Address </label>
           <input
-            className={state.errors.email && styles.errorInput}
+            className={state.errors.email ? styles.errorInput : ""}
             type="email"
             data-testid="email"
             name="email"
@@ -241,11 +241,12 @@ export default function FormReduced() {
             onChange={handleChange}
             onBlur={handleBlur}
           ></input>
-          {state.errors.email && (
-            <p className={styles.error}>Please enter a valid email</p>
-          )}
+          {state.errors.email ? (
+            <p data-testid="emailError" className={styles.error}>Please enter a valid email</p>
+          ) : ""}
         </fieldset>
         <button
+          data-testid="button"
           className={styles.buttonStyle}
           type="submit"
           disabled={error ? true : false}
