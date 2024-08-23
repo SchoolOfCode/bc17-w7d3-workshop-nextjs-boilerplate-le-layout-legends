@@ -31,6 +31,7 @@ const Reviews = () => {
 					className={`${styles.buttons} ${
 						selectedCountry === "England" ? styles.buttonActive : ""
 					}`}
+					data-testid="englandButton"
 				>
 					England
 				</button>
@@ -54,6 +55,7 @@ const Reviews = () => {
 					text={fetchedData.text}
 					author={fetchedData.author}
 					location={fetchedData.location}
+					data-testid="reviewText"
 				/>
 			)}
 		</section>

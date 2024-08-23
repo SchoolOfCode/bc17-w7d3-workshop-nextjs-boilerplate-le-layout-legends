@@ -43,3 +43,16 @@ test("check if inputting for postCode and it's error works", async ({
 });
 
 
+test("check review buttons visible, turns orange when country clicked and reviews are visible", async ({
+  page,
+}) => {
+  await page.goto("http://localhost:3000/");
+  const englandButton = await page.getByTestId("englandButton");
+  await expect(englandButton).toBeVisible();
+  await englandButton.click();
+  await expect(englandButton).toHaveClass(/buttonActive/);
+  const reviewText = await page.locator(
+    "text=Outstanding craftsmanship and attention to detail. Our living room has never felt so cozy. Thank you, Fireplace Palace!"
+  );
+  await expect(reviewText).toBeVisible();
+});
